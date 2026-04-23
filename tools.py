@@ -1,9 +1,8 @@
 from langchain_core.tools import tool
 from sklearn.datasets import load_iris
-from sklearn.neighbors import NearestNeighbors
+from sklearn.neighbors import NearestNeighbors, KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import cross_val_score
-from sklearn.metrics import accuracy_score
 import pandas as pd
 import numpy as np
 
@@ -13,6 +12,9 @@ df["species"] = [iris.target_names[t] for t in iris.target]
 
 _knn = NearestNeighbors(n_neighbors=3, metric="euclidean")
 _knn.fit(iris.data)
+
+_knn_classifier = KNeighborsClassifier(n_neighbors=3)
+_knn_classifier.fit(iris.data, iris.target)
 
 _dt = DecisionTreeClassifier(max_depth=3, random_state=42)
 _dt.fit(iris.data, iris.target)

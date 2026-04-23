@@ -1,0 +1,6 @@
+langchain-core
+langchain-ollama
+langgraph
+scikit-learn
+pandas
+numpy
